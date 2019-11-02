@@ -22,6 +22,19 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
     MessagesView.render();
+
+    $(document).ready(function () {
+      var $name = $('.username');
+      $name.click(function () {
+        //store the name that was clicked
+        var name = $(this).text();
+        name = name.slice(0, name.length - 1);
+        //then send it over to friends.togglestatus(nanme)
+        Friends.toggleStatus(name);
+      });
+      // all custom jQuery will go here
+    });
+
   },
 
   fetch: function (callback = () => { }) {

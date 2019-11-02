@@ -16,7 +16,7 @@ var MessagesView = {
 
       tempData = data;
 
-      //
+
       var paras = document.getElementsByClassName('children');
 
       $('.chat').remove();
