@@ -4,25 +4,30 @@ var App = {
 
   username: 'anonymous',
 
+  start: false,
+
   initialize: function () {
     App.username = window.location.search.substr(10);
 
-    FormView.initialize();
-    RoomsView.initialize();
-    MessagesView.initialize();
+
+    if (!App.start) {
+      FormView.initialize();
+      RoomsView.initialize();
+      MessagesView.initialize();
+      App.start = true;
+      Friends.initialize();
+    }
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
     MessagesView.render();
-    console.log('im rendering');
-
   },
 
   fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      console.log(data); // del later
       callback();
     });
   },
