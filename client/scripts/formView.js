@@ -13,13 +13,13 @@ var FormView = {
     //grab the DOM element value and then and then clear the DOM element too
     //do the create method
     var msg = $('#message').val();
-
+    var room = $('#lobby').val();
 
     // create an object
     var message = {
       username: App.username,
       text: msg,
-      roomname: 'lobby'
+      roomname: room
     };
 
     Parse.create(message);
