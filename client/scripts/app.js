@@ -16,6 +16,7 @@ var App = {
       MessagesView.initialize();
       App.start = true;
       Friends.initialize();
+      RoomsView.render(); //populates with lobbies, but downside right now is that is does not keep up with refreshing messages. unless i load the page
     }
 
     // Fetch initial batch of messages
@@ -23,6 +24,7 @@ var App = {
     App.fetch(App.stopSpinner);
     MessagesView.render();
 
+    //there are two functions that run upon a click, this sends the username info to toggle and runs toggle...a
     $(document).ready(function () {
       var $name = $('.username');
       $name.click(function () {
@@ -32,7 +34,7 @@ var App = {
         //then send it over to friends.togglestatus(nanme)
         Friends.toggleStatus(name);
       });
-      // all custom jQuery will go here
+      // I think this doesn't work continuosly because we keep reinitializing, which we do to keep up with the dynamic content that keeps feeding in, otherwise the new content would not be able to get this click feature. and since we keep reinitializing this, and the server is slow, when the callstack is big, this functionlity is temporarily unavailable. to fix this there is event delegation which is a jquery concept that lets you put this event listener on a parent and then everything that comes through the parent, all the children will get its properties...like this click functionali
     });
 
   },

@@ -1,8 +1,5 @@
 var Friends = {
 
-  //this needs to have a toggle status feature, that turns on if click function happens somewhere...
-  //but then how will it distinguish between friends? maybe store peoples names and friend status in an object???
-
   $name: $('.name'),
 
   initialize: function () {
@@ -24,12 +21,21 @@ var Friends = {
     }
     console.log(Friends);
 
-    // if (this.storage[name]) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
+    //have this function also rerender the chats section...
+    //since new freinds were added to the chat
+    MessageView.render();
+
+
   },
+  //the below render is what you want to use if the person is a friend;
+
+  render: _.template(`
+  <div class="chat">
+    <div class="username friends" id='<%- username %>'<b><%- username %>:</b></div>
+    <div><%- text %></div>
+  </div>
+
+`)
 
 
 

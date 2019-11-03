@@ -10,10 +10,12 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
+
     //grab the DOM element value and then and then clear the DOM element too
     //do the create method
     var msg = $('#message').val();
-    var room = $('#lobby').val();
+
+    var room = $('.select option:selected').val();
 
     // create an object
     var message = {
